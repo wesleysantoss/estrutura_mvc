@@ -1,2 +1,2 @@
-# estrutura-mvc
-Estrutura base do MVC
+# ESTRUTURA MVC NO PHP
+Estrutura de exemplo para MVC.
