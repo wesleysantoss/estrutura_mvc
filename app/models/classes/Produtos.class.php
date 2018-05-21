@@ -4,7 +4,7 @@ require_once PATH_SERVER . "models/dao/ProdutoDao.php";
 
 class Usuario 
 {
-	private ProdutoDao;
+	private $ProdutoDao;
 
 	/**
 	* Abre conexão com o banco de dados.
