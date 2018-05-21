@@ -1,17 +1,17 @@
 <?php
 
-require_once PATH_SERVER . "models/dao/UsuarioDao.php";
+require_once PATH_SERVER . "models/dao/ProdutoDao.php";
 
 class Usuario 
 {
-	private $UsuarioDao;
+	private ProdutoDao;
 
 	/**
 	* Abre conexão com o banco de dados.
 	*/
 	private function abreConexaoBD()
 	{
-		$this->UsuarioDao = new UsuarioDao;
+		$this->ProdutoDao = new ProdutoDao;
 	}
 
 	/**
@@ -19,7 +19,7 @@ class Usuario
 	*/
 	private function fechaConexaoBD()
 	{
-		unset($this->UsuarioDao);
+		unset($this->ProdutoDao);
 	}
 
 	public function buscarProdutos()
