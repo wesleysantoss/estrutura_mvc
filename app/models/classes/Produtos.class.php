@@ -21,9 +21,9 @@ class Usuario
 	{
 		unset($this->UsuarioDao);
 	}
-  
-  public function buscarProdutos()
-  {
+
+	public function buscarProdutos()
+	{
 		// Abre conexão com o BD.
 		$this->abreConexaoBD();
 
@@ -33,8 +33,8 @@ class Usuario
 		$this->fechaConexaoBD();
 
 		return $produtos;
-  }
-  
+	}
+
 }
 
 ?>
