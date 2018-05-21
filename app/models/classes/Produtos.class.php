@@ -2,7 +2,7 @@
 
 require_once PATH_SERVER . "models/dao/ProdutoDao.php";
 
-class Usuario 
+class Produto 
 {
 	private $ProdutoDao;
 
