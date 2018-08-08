@@ -28,7 +28,13 @@ class Controller
     	return $this->array_js;
     }
 
-    public function renderSite($view, $title)
+    /**
+     * Renderiza uma view na tela.
+     * @param $view  - Caminho da view a ser renderizada.
+     * @param $title - Titulo da página, que é visivel na página app/views/frontend/site/layouts/header.php
+     * @param $param - Caso queira mandar algum valor para a view mostrar.
+     */
+    public function renderSite($view, $title, $param = false)
     {
     	$css = $this->getCss();
     	$js  = $this->getJs();

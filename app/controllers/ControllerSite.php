@@ -7,6 +7,15 @@ class ControllerSite extends Controller
 
 	public function pageHome()
 	{
+		require_once "../models/dao/ProdutosDao.php";
+
+		$produtoDao = new ProdutoDao;
+
+		// Solicita para a DAO dados para ser mostrado na view.
+		$param = $produtoDao->getAllProdutos();
+
+		unset($produtoDao);
+		
 		$array_css = ['home.css'];
 		$array_js  = ['home.js'];
 		$title     = 'Início';
@@ -14,7 +23,7 @@ class ControllerSite extends Controller
 
 		$this->setCss($array_css);
 		$this->setJs($array_js);
-		$this->renderSite($view, $title);
+		$this->renderSite($view, $title, $param);
 	}
 
 	public function pageContato()

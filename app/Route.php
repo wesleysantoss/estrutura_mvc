@@ -3,23 +3,26 @@
 class Route 
 {
 	private $route;  // Variavel que receber todas as rotas possiveis do sistema.
-	private $https = false;
+	private $https = false; // Identifica se a rota deve transformar todas requisições em HTTPS.
 
-	public function __construct()
+	public function iniciarAplicacao()
 	{
-		$this->initRoute();
-		$this->run($this->getUrl());
+		$this->iniciarRotas();
+
+		$url = $this->getUrl();
+		$this->run($url);
 	}
 	
 	/**
 	* Inicia todas as rotas possiveis do sistema.
 	*/
-	protected function initRoute()
+	protected function iniciarRotas()
 	{	
 
+		// As rotas devem ser construida com a chave do array sendo a rota em si.
 		$array_routes['/mvc/home/'] = array( 
-			"controller" => "ControllerSite", 
-			"action"     => "pageHome"
+			"controller" => "ControllerSite", // Controller a ser chamado nessa rota. 
+			"action"     => "pageHome" // Função do controller a ser chamado.
 		);
 
 		$array_routes['/mvc/contato/'] = array(
@@ -32,7 +35,7 @@ class Route
 
 	/**
 	* Direciona o usuário para o controller referente a sua rota
-	* @param $url - atual URL do usuário
+	* @param $url - atual URL do usuário.
 	*/
 	protected function run($url)
 	{	
@@ -47,7 +50,8 @@ class Route
 	}
 
 	/**
-	* Captura a atual URL do usuário.
+	* Identifica qual é a atual URL do usuário.
+	* @return String com a atual URL do usuário.
 	*/
 	protected function getUrl()
 	{

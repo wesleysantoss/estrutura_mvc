@@ -20,6 +20,10 @@ class ProdutoDao
   public function getAllProdutos()
   {
      // Código SQL.
+
+     $produtos = '{"nome" : "Produto de teste", "preco": 90}';
+
+     return json_decode($produtos);
   }
 }
 ?>

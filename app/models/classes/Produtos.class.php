@@ -7,7 +7,7 @@ class Produto
 	private $ProdutoDao;
 
 	/**
-	* Abre conexão com o banco de dados.
+	* Abre conexão com a DAO.
 	*/
 	private function abreConexaoBD()
 	{
@@ -15,21 +15,24 @@ class Produto
 	}
 
 	/**
-	* Fecha a conexão com o banco de dados.
+	* Fecha a conexão com a DAO.
 	*/
 	private function fechaConexaoBD()
 	{
 		unset($this->ProdutoDao);
 	}
 
+	/**
+	 * Função de exemplo que busca todos os produtos
+	 */
 	public function buscarProdutos()
 	{
-		// Abre conexão com o BD.
+		// Abre conexão com a DAO.
 		$this->abreConexaoBD();
 
 		$produtos = $this->ConexaoBD->getAllProdutos();
 
-		// Fecha conexão com o BD.
+		// Fecha conexão com a DAO.
 		$this->fechaConexaoBD();
 
 		return $produtos;
