@@ -2,15 +2,13 @@
 
 class Route 
 {
-	private $route;  // Variavel que receber todas as rotas possiveis do sistema.
+	private $route;         // Variavel que receber todas as rotas possiveis do sistema.
 	private $https = false; // Identifica se a rota deve transformar todas requisições em HTTPS.
 
 	public function iniciarAplicacao()
 	{
 		$this->iniciarRotas();
-
-		$url = $this->getUrl();
-		$this->run($url);
+		$this->run($this->getUrl());
 	}
 	
 	/**
@@ -18,16 +16,17 @@ class Route
 	*/
 	protected function iniciarRotas()
 	{	
-
 		// As rotas devem ser construida com a chave do array sendo a rota em si.
-		$array_routes['/mvc/home/'] = array( 
+		$array_routes['/mvc/home'] = array( 
 			"controller" => "ControllerSite", // Controller a ser chamado nessa rota. 
-			"action"     => "pageHome" // Função do controller a ser chamado.
+			"action"     => "pageHome"        // Função do controller a ser chamado.
 		);
 
-		$array_routes['/mvc/contato/'] = array(
+		// Rotas de API
+		// Para requisições AJAX.
+		$array_routes['/mvc/api/getProdutos'] = array( 
 			"controller" => "ControllerSite", 
-			"action"     => "pageContato"
+			"action"     => "getProduto"       
 		);
 
 		$this->route = $array_routes;
@@ -56,15 +55,19 @@ class Route
 	protected function getUrl()
 	{
 		if($this->https){
-			if (isset($_SERVER['HTTPS'])) 
+			if (isset($_SERVER['HTTPS'])) {
 				return parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-			else
+			}
+			else{
 				header('location: https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
+			}
 		}else{
-			if (isset($_SERVER['HTTPS']))
+			if (isset($_SERVER['HTTPS'])){
 				header('location: http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
-			else
+			}
+			else{
 				return parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+			}
 		}
 	}
 }

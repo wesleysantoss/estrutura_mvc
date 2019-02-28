@@ -1,8 +1,8 @@
 <?php
 
-require_once PATH_SERVER . "models/dao/ProdutoDao.php";
+require_once PATH . "/models/dao/ProdutosDao.php";
 
-class Produto 
+class Produtos 
 {
 	private $ProdutoDao;
 
@@ -25,12 +25,12 @@ class Produto
 	/**
 	 * Função de exemplo que busca todos os produtos
 	 */
-	public function buscarProdutos()
+	public function buscarProduto()
 	{
 		// Abre conexão com a DAO.
 		$this->abreConexaoBD();
 
-		$produtos = $this->ConexaoBD->getAllProdutos();
+		$produtos = $this->ProdutoDao->getProduto();
 
 		// Fecha conexão com a DAO.
 		$this->fechaConexaoBD();

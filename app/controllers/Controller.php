@@ -30,18 +30,18 @@ class Controller
 
     /**
      * Renderiza uma view na tela.
-     * @param $view  - Caminho da view a ser renderizada.
-     * @param $title - Titulo da página, que é visivel na página app/views/frontend/site/layouts/header.php
+     * @param $view  - Nome da view a ser renderizada.
+     * @param $title - Titulo da página, que é visivel na página.
      * @param $param - Caso queira mandar algum valor para a view mostrar.
      */
-    public function renderSite($view, $title, $param = false)
+    public function renderSite($view, $title, $param = '')
     {
-    	$css = $this->getCss();
-    	$js  = $this->getJs();
+    	$css = $this->getCss(); // Variavel fica visivel no header.
+    	$js  = $this->getJs();  // Variavel fica visivel no footer.
 
-        require_once 'app/views/frontend/site/layouts/header.php';
-        require_once 'app/views/frontend/site/' . $view . '.php';
-        require_once 'app/views/frontend/site/layouts/footer.php';
+        require_once 'app/views/site/layouts/header.php';
+        require_once 'app/views/site/' . $view . '.php';
+        require_once 'app/views/site/layouts/footer.php';
     }
 
 }
