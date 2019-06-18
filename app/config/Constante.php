@@ -5,7 +5,7 @@
 // ----------------------------------------------------------
 
 define('APP_HOST', 	$_SERVER['HTTP_HOST']);
-define('PATH_URL', 	'http://127.0.0.1/mvc/app');
+define('PATH_URL', 	'http://127.0.0.1/estrutura-mvc/app');
 define('PATH'    , 	'app');
 define('DS'      ,   DIRECTORY_SEPARATOR);
 

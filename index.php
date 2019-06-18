@@ -1,6 +1,5 @@
 <?php
-	require_once "app/config/Constante.php";
-	require_once "app/Route.php";
+	require_once "vendor/autoload.php";
 
 	$Route = new Route;
 	$Route->iniciarAplicacao();

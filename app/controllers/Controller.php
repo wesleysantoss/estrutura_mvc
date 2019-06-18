@@ -1,5 +1,7 @@
 <?php
 
+namespace App\controllers;
+
 class Controller
 {
 	protected $array_css; // Array de CSS que a página vai receber.

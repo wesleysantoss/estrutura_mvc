@@ -17,15 +17,15 @@ class Route
 	protected function iniciarRotas()
 	{	
 		// As rotas devem ser construida com a chave do array sendo a rota em si.
-		$array_routes['/mvc/home'] = array( 
-			"controller" => "ControllerSite", // Controller a ser chamado nessa rota. 
+		$array_routes['/estrutura-mvc/home'] = array( 
+			"controller" => "App\controllers\ControllerSite", // Controller a ser chamado nessa rota. 
 			"action"     => "pageHome"        // Função do controller a ser chamado.
 		);
 
 		// Rotas de API
 		// Para requisições AJAX.
-		$array_routes['/mvc/api/getProdutos'] = array( 
-			"controller" => "ControllerSite", 
+		$array_routes['/estrutura-mvc/api/getProdutos'] = array( 
+			"controller" => "App\controllers\ControllerSite", 
 			"action"     => "getProduto"       
 		);
 
@@ -39,7 +39,6 @@ class Route
 	protected function run($url)
 	{	
 		if(!empty($this->route[$url])){
-			require_once "controllers/".$this->route[$url]['controller'].".php";
 			$Controller = new $this->route[$url]['controller'];
 			$action     = $this->route[$url]['action'];
 			$Controller->$action();

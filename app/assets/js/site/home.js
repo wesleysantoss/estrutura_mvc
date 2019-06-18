@@ -1,7 +1,7 @@
 $("#btn-ver-mais").on("click", async function(){
     try {
         const resultado = await $.ajax({
-            url: '/mvc/api/getProdutos',
+            url: '/estrutura-mvc/api/getProdutos',
             dataType: 'json',
         });
 

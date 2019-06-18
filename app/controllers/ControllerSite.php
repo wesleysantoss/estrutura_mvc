@@ -1,6 +1,8 @@
 <?php
 
-require_once "Controller.php";
+namespace App\controllers;
+use App\controllers\Controller;
+use App\models\classes\Produtos;
 
 class ControllerSite extends Controller
 {
@@ -21,13 +23,10 @@ class ControllerSite extends Controller
 	// Para requisições AJAX.
 	public function getProduto()
 	{
-		require_once PATH . "/models/classes/Produtos.class.php";
-
 		$Produtos = new Produtos;
 		$dados = $Produtos->buscarProduto();
 		unset($Produtos);
 
 		echo json_encode($dados);
 	}
-	
 }

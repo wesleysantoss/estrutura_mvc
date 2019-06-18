@@ -1,18 +1,19 @@
 <?php
 
-// require_once PATH . "/config/ConexaoBD_Site.php";
+namespace App\models\dao;
+use App\config\ConexaoBD;
 
-class ProdutoDao	 
+class ProdutosDao	 
 {
-  // public function __construct()
-  // {
-  //   $this->pdo = ConexaoBDSite::getConnection();
-  // }
+  public function __construct()
+  {
+    $this->pdo = ConexaoBD::getConnection();
+  }
 
-  // public function __destruct()
-  // {
-  //   unset($this->pdo);
-  // }
+  public function __destruct()
+  {
+    unset($this->pdo);
+  }
 
   /**
   * Função que pega todos os produtos.
