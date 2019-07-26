@@ -2,56 +2,46 @@
 
 class Route 
 {
-	private $route;         // Variavel que receber todas as rotas possiveis do sistema.
-	private $https = false; // Identifica se a rota deve transformar todas requisições em HTTPS.
+	private $routes;         
+	private $https = false; 
 
-	public function iniciarAplicacao()
+	public function initApp()
 	{
-		$this->iniciarRotas();
+		$this->initRoutes();
 		$this->run($this->getUrl());
 	}
 	
-	/**
-	* Inicia todas as rotas possiveis do sistema.
-	*/
-	protected function iniciarRotas()
+	private function initRoutes()
 	{	
-		// As rotas devem ser construida com a chave do array sendo a rota em si.
-		$array_routes['/estrutura-mvc/home'] = array( 
-			"controller" => "App\controllers\ControllerSite", // Controller a ser chamado nessa rota. 
-			"action"     => "pageHome"        // Função do controller a ser chamado.
+		$array_routes['/estrutura-mvc/home'] = array(         // Route
+			"controller" => "App\controllers\ControllerHome", // Controller 
+			"action"     => "index"                           // Function 
 		);
 
-		// Rotas de API
-		// Para requisições AJAX.
-		$array_routes['/estrutura-mvc/api/getProdutos'] = array( 
-			"controller" => "App\controllers\ControllerSite", 
-			"action"     => "getProduto"       
-		);
-
-		$this->route = $array_routes;
+		$this->routes = $array_routes;
 	}
 
 	/**
-	* Direciona o usuário para o controller referente a sua rota
-	* @param $url - atual URL do usuário.
+	* Identifies which controller to respond to url
+	* @param $url
 	*/
-	protected function run($url)
+	private function run($url)
 	{	
-		if(!empty($this->route[$url])){
-			$Controller = new $this->route[$url]['controller'];
-			$action     = $this->route[$url]['action'];
+		if(!empty($this->routes[$url])){
+			$Controller = new $this->routes[$url]['controller'];
+			$action     = $this->routes[$url]['action'];
 			$Controller->$action();
-		}else{
-			echo 'ERRO 404 - Página não existe';
+		}
+		else{
+			echo 'ERROR 404 - Page not found';
 		}
 	}
 
 	/**
-	* Identifica qual é a atual URL do usuário.
-	* @return String com a atual URL do usuário.
+	* Get url.
+	* @return String url.
 	*/
-	protected function getUrl()
+	private function getUrl()
 	{
 		if($this->https){
 			if (isset($_SERVER['HTTPS'])) {

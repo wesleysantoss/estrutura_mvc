@@ -3,14 +3,12 @@
 
 <?php
 	if(!empty($js)){
-        // Percorre todos os JS da view.
-        // Que foram setados no controller.
 	    foreach($js as $row){
 	        if(file_exists('app/assets/js/site/' . $row)){
-                $caminho = PATH_URL . '/assets/js/site/' . $row;
+                $path = PATH_URL . '/assets/js/site/' . $row;
                 $version = filemtime(PATH . '/assets/js/site/' . $row);
                 
-	            echo '<script type="text/javascript" src="'.$caminho.'?v='.$version.'"></script>';
+	            echo '<script type="text/javascript" src="'.$path.'?v='.$version.'"></script>';
 	        }
 	    }
 	}

@@ -10,13 +10,11 @@
 
     <?php
         if(!empty($css)){
-            // Percorre todos os CSS da view.
-            // Que foram setadas no controller.
             foreach($css as $row){
                 if(file_exists('app/assets/css/site/' . $row)){
-                    $caminho = PATH_URL . '/assets/css/site/' . $row;
+                    $path = PATH_URL . '/assets/css/site/' . $row;
                     $version = filemtime(PATH . '/assets/css/site/' . $row);
-                    echo '<link href="'.$caminho.'?v='.$version.'" rel="stylesheet">';
+                    echo '<link href="'.$path.'?v='.$version.'" rel="stylesheet">';
                 }
             }
         }

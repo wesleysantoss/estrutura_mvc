@@ -4,30 +4,17 @@ namespace App\controllers;
 
 class Controller
 {
-	protected $array_css; // Array de CSS que a página vai receber.
-	protected $array_js;  // Array de JS que a página vai receber.
+	protected $css; // Array CSS
+	protected $js;  // Array JS
 
-	/**
-	* Gets e setters
-	*/
-	public function setCss($array_css)
+    public function __set($attribute, $value)
     {
-    	$this->array_css = $array_css;
+        $this->$attribute = $value;
     }
 
-    public function setJs($array_js)
+    public function __get($value)
     {
-    	$this->array_js = $array_js;
-    }
-
-    public function getCss()
-    {
-    	return $this->array_css;
-    }
-
-    public function getJs()
-    { 
-    	return $this->array_js;
+        return $value;
     }
 
     /**
@@ -36,10 +23,10 @@ class Controller
      * @param $title - Titulo da página, que é visivel na página.
      * @param $param - Caso queira mandar algum valor para a view mostrar.
      */
-    public function renderSite($view, $title, $param = '')
+    public function renderView($view, $title, $param = null)
     {
-    	$css = $this->getCss(); // Variavel fica visivel no header.
-    	$js  = $this->getJs();  // Variavel fica visivel no footer.
+    	$css = $this->css; // Variavel fica visivel no header.
+    	$js = $this->js;  // Variavel fica visivel no footer.
 
         require_once 'app/views/site/layouts/header.php';
         require_once 'app/views/site/' . $view . '.php';
