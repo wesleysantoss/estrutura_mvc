@@ -1,7 +1,6 @@
 <?php
 
 namespace App\controllers;
-use App\models\User;
 
 class ControllerHome extends Controller
 {

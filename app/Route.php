@@ -13,11 +13,10 @@ class Route
 	
 	private function initRoutes()
 	{	
-		$array_routes['/estrutura-mvc/home'] = array(         // Route
-			"controller" => "App\controllers\ControllerHome", // Controller 
-			"action"     => "index"                           // Function 
-		);
+		$RouteHome = require_once(__DIR__ . "/routes/RouteHome.php");
+		$RouteLogin = require_once(__DIR__ . "/routes/RouteLogin.php");
 
+		$array_routes = array_merge($RouteHome, $RouteLogin);
 		$this->routes = $array_routes;
 	}
 
@@ -50,7 +49,8 @@ class Route
 			else{
 				header('location: https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
 			}
-		}else{
+		}
+		else{
 			if (isset($_SERVER['HTTPS'])){
 				header('location: http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
 			}

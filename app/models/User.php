@@ -10,12 +10,11 @@ class User
 	public $username;
 	public $password;
 
-	private static $pdo;
-
 	public function __construct($id)
 	{
-		self::openConnection();
-		$stmt = self::$pdo->prepare("SELECT id, name, username, password FROM user WHERE id = :id");
+		$pdo = connectionDB::getConnection();
+
+		$stmt = $pdo->prepare("SELECT id, name, username, password FROM user WHERE id = :id");
 		$stmt->bindValue(':id', $id);
 		$stmt->execute();
 
@@ -29,15 +28,11 @@ class User
 		}
 	}
 
-	static function openConnection()
-	{
-	  	self::$pdo = connectionDB::getConnection();
-	}
-
 	static function create($name, $username, $password)
 	{
-		self::openConnection();
-		$stmt = self::$pdo->prepare("INSERT INTO user (name, username, password) VALUES (:name, :username, :password)");
+		$pdo = connectionDB::getConnection();
+
+		$stmt = $pdo->prepare("INSERT INTO user (name, username, password) VALUES (:name, :username, :password)");
 		$stmt->bindValue(':name', $name);
 		$stmt->bindValue(':username', $username);
 		$stmt->bindValue(':password', $password);
@@ -46,8 +41,9 @@ class User
   
 	static function findByUserName($username)
 	{
-		self::openConnection();
-		$stmt = self::$pdo->prepare("SELECT id, name, username, password FROM user WHERE username = :username");
+		$pdo = connectionDB::getConnection();
+
+		$stmt = $pdo->prepare("SELECT id, name, username, password FROM user WHERE username = :username");
 		$stmt->bindValue(':username', $username);
 		$stmt->execute();
 		return $stmt->fetch(PDO::FETCH_ASSOC);
@@ -55,8 +51,9 @@ class User
 
 	static function authenticate($username, $password)
 	{
-		self::openConnection();
-		$stmt = self::$pdo->prepare("SELECT COUNT(*) AS total FROM user WHERE username = :username AND password = :password");
+		$pdo = connectionDB::getConnection();
+
+		$stmt = $pdo->prepare("SELECT COUNT(*) AS total FROM user WHERE username = :username AND password = :password");
 		$stmt->bindValue(':username', $username);
 		$stmt->bindValue(':password', $password);
 		$stmt->execute();

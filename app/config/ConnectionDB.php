@@ -9,9 +9,12 @@ class ConnectionDB
     public static function getConnection() 
     {
         if(!isset(self::$connection)){
-            self::$connection = new \PDO("mysql:host=".DB_HOST."; dbname=".DB_DATABASE.";charset=utf8", DB_LOGIN, DB_PASSWORD);
-            self::$connection->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+            self::$connection = new \PDO(
+                "mysql:host=".DB_HOST."; dbname=".DB_DATABASE.";charset=utf8", 
+                DB_LOGIN, DB_PASSWORD
+            );
         }
+
         return self::$connection;
     }
 }
