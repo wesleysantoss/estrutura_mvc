@@ -4,3 +4,16 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
 RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
 RewriteRule ^(.*)$ index.php?path=$1 [NC,L,QSA]
+
+#<IfModule mod_rewrite.c>
+#    RewriteEngine On
+#    RewriteBase /
+#    RewriteRule ^index\.php$ - [L]
+#    RewriteCond %{REQUEST_FILENAME} !-f
+#    RewriteCond %{REQUEST_FILENAME} !-d
+#    RewriteRule . /index.php [L]
+#</IfModule>
+
+#<ifModule mod_headers.c>
+#    Header set Connection keep-alive
+#</ifModule>
