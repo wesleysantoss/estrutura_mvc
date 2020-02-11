@@ -3,8 +3,7 @@
     "description": "Estrutura de exemplo para o MVC com o PHP",
     "authors": [
         {
-            "name": "Wesley Santos",
-            "email": "wessleysanttos@live.com"
+            "name": "Wesley Santos"
         }
     ],
     "autoload": {
